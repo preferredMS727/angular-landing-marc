@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
-
 @Component({
-  selector: 'app-record-detail',
-  templateUrl: './record-detail.component.html',
-  styleUrls: ['./record-detail.component.scss']
+  selector: 'app-blog-list',
+  templateUrl: './blog-list.component.html',
+  styleUrls: ['./blog-list.component.scss']
 })
-export class RecordDetailComponent implements OnInit {
+export class BlogListComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
     this.initialize();
-
   }
-
   // Post Slider
   initialize() {
     if ($('.post-images-slider').length > 0) {
@@ -25,4 +22,5 @@ export class RecordDetailComponent implements OnInit {
       });
     }
   }
+
 }

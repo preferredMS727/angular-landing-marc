@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BlogComponent
+    component: BlogListComponent
   },
   {
     path: 'detail',
@@ -16,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BlogComponent, BlogDetailComponent, ],
+  declarations: [ BlogListComponent, BlogDetailComponent ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
