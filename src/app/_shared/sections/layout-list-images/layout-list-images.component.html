@@ -1,0 +1,34 @@
+<section class="module pb-0" id="works">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="module-title font-alt">{{ title }}</h2>
+        <div class="module-subtitle font-serif"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="filter font-alt">
+          <!-- <li style="cursor: pointer;" (click)="filterLayoutOption('')"><a class="wow fadeInUp">All</a></li> -->
+          <li style="cursor: pointer;" *ngFor="let layoutTypeItem of allLayoutType"
+            (click)="filterLayoutOption(layoutTypeItem.id)"><a class="wow fadeInUp">{{ layoutTypeItem.name }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
+    <li class="work-item webdesign" *ngFor="let layoutItem of filteredValueObservable | async">
+      <a href="portfolio_single_featured_image1.html">
+        <div class="work-image">
+          <img src="assets/images/portfolio/grid-portfolio1.jpg" alt="Portfolio Item" />
+        </div>
+        <div class="work-caption font-alt">
+          <h3 class="work-title">{{ layoutItem.title }}</h3>
+          <div class="work-descr">{{ layoutItem.description }}</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
