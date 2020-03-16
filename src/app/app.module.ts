@@ -7,9 +7,9 @@ import { NavbarComponent } from './_shared/navbar/navbar.component';
 import { FooterComponent } from './_shared/footer/footer.component';
 import { HomeModule } from './home/home.component.module';
 import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +19,7 @@ import { reducers, metaReducers } from './reducers';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     HomeModule,
     AuthModule,
     StoreModule.forRoot(reducers, {

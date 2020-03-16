@@ -10,10 +10,10 @@ declare const $: any;
 })
 export class VideoBackgroundComponent implements OnInit {
 
-  videos = [
-    // { videoURL: "_z-1fTlSDF0", containment: '.home-section', autoPlay: true, mute: false, startAt: 18, opacity: 1, loop: true, addRaster: true, showControls: false },
-    // { videoURL: "bNucJgetMjE", containment: '.home-section', autoPlay: true, mute: false, startAt: 18, opacity: 1, loop: false, addRaster: false, showControls: false },
-    // { videoURL: "_z-1fTlSDF0", containment: '.home-section', autoPlay: true, mute: false, startAt: 18, opacity: 1, loop: true, addRaster: true, showControls: false }
+  youtubeList = [
+    { videoURL: "_z-1fTlSDF0", containment: '.home-section', autoPlay: true, mute: false, startAt: 18, opacity: 1, loop: true, addRaster: true, showControls: false },
+    { videoURL: "bNucJgetMjE", containment: '.home-section', autoPlay: true, mute: false, startAt: 18, opacity: 1, loop: false, addRaster: false, showControls: false },
+    { videoURL: "_z-1fTlSDF0", containment: '.home-section', autoPlay: true, mute: false, startAt: 18, opacity: 1, loop: true, addRaster: true, showControls: false }
   ];
 
   constructor(
@@ -22,22 +22,23 @@ export class VideoBackgroundComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 500);
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 500);
+
     this.initialize();
 
     // Youtube video background
     // https://github.com/pupunzi/jquery.mb.YTPlayer/wiki
     $(() => {
       // $(".video-player").mb_YTPlayer();
-      const ytPlayer = $("#video-player").YTPlaylist(this.videos, true, function (video) {
+      $("#video-player").YTPlaylist(this.youtubeList, true, function (video) {
         if (video.videoData) {
           console.log('video plays:123123123')
         }
       });
       $("#video-player").on("YTPStart", (e) => {
-        // this.spinner.hide();
+        this.spinner.hide();
         console.log('video played')
       })
     });
