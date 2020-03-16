@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RecordComponent } from './record/record.component';
-import { RecordDetailComponent } from './record-detail/record-detail.component';
+import { DatasheetComponent } from './datasheet/datasheet.component';
+import { DatasheetDetailComponent } from './datasheet-detail/datasheet-detail.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SectionsModule } from '../_shared/sections/sections.module';
 import { TreeviewModule } from 'ngx-treeview';
@@ -9,16 +9,16 @@ import { TreeviewModule } from 'ngx-treeview';
 const routes: Routes = [
   {
     path: '',
-    component: RecordComponent
+    component: DatasheetComponent
   },
   {
     path: 'detail',
-    component: RecordDetailComponent
+    component: DatasheetDetailComponent
   },
 ];
 
 @NgModule({
-  declarations: [RecordComponent, RecordDetailComponent],
+  declarations: [DatasheetComponent, DatasheetDetailComponent],
   imports: [
     CommonModule,
     SectionsModule,
@@ -26,4 +26,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class RecordModule { }
+export class DatasheetModule { }

@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
     {title: 'HOME', path: '/home'},
     {title: 'INSPIRATION', path: '/inspiration'},
     {title: 'BLOG', path: '/blog'},
-    {title: 'RECORD', path: '/record'},
+    {title: 'DATA SHEET', path: '/datasheet'},
     {title: 'LOGIN/REGISTER', path: '/auth'},
   ]
   constructor(

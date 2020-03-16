@@ -42,6 +42,7 @@
               "src/assets/lib/smoothscroll.js",
               "src/assets/lib/magnific-popup/dist/jquery.magnific-popup.js",
               "src/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js",
+              "node_modules/readmore-js/readmore.min.js",
               "src/assets/js/plugins.js",
               "src/assets/js/main.js"
             ]

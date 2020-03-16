@@ -4,23 +4,39 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { SectionsModule } from '../_shared/sections/sections.module';
-
+import { BlogPostComponent } from './cpnts/blog-post/blog-post.component';
+import { SlideblogPostComponent } from './cpnts/slideblog-post/slideblog-post.component';
+import { BlogComponent } from './blog.component';
+import { BlogNavigationComponent } from './blog-navigation/blog-navigation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 const routes: Routes = [
   {
     path: '',
-    component: BlogListComponent
+    component: BlogComponent,
+    children: [
+      {
+        path: '',
+        component: BlogListComponent
+      },
+      {
+        path: 'detail',
+        component: BlogDetailComponent
+      },
+      
+    ]
   },
-  {
-    path: 'detail',
-    component: BlogDetailComponent
-  }
+  
 ];
 
 @NgModule({
-  declarations: [ BlogListComponent, BlogDetailComponent ],
+  declarations: [ BlogListComponent, BlogDetailComponent, BlogPostComponent, SlideblogPostComponent, BlogComponent, BlogNavigationComponent ],
   imports: [
     CommonModule,
     SectionsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(routes)
   ]
 })

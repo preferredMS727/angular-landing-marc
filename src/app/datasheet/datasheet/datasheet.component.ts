@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TreeviewItem, TreeviewConfig } from 'ngx-treeview';
 
 @Component({
-  selector: 'app-record',
-  templateUrl: './record.component.html',
-  styleUrls: ['./record.component.scss']
+  selector: 'app-datasheet',
+  templateUrl: './datasheet.component.html',
+  styleUrls: ['./datasheet.component.scss']
 })
-export class RecordComponent implements OnInit {
-
+export class DatasheetComponent implements OnInit {
   dropdownEnabled = true;
   items: TreeviewItem[];
   values: number[];
@@ -20,7 +19,32 @@ export class RecordComponent implements OnInit {
     maxHeight: 800
   });
 
-  
+  datasheetList = [
+    {
+      link: 'datasheet/detail',
+      workTitle: 'Corporate Identity',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio1.jpg'
+    },
+    {
+      link: 'datasheet/detail',
+      workTitle: 'Disk Cover',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio3.jpg'
+    },
+    {
+      link: 'datasheet/detail',
+      workTitle: 'Corporate Identity',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio4.jpg'
+    },
+    {
+      link: 'datasheet/detail',
+      workTitle: 'Disk Cover',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio5.jpg'
+    },
+  ]
 
   constructor() { }
 
@@ -50,7 +74,7 @@ export class RecordComponent implements OnInit {
         { text: 'Red', value: 32, checked: false }
       ]
     });
-    const Price = new TreeviewItem({ 
+    const Price = new TreeviewItem({
       text: 'Price', value: 4, collapsed: true, children: [
         { text: '$1000', value: 41, checked: false },
         { text: '$10000', value: 42, checked: false }
