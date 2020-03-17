@@ -5,6 +5,7 @@ import { DatasheetDetailComponent } from './datasheet-detail/datasheet-detail.co
 import { Routes, RouterModule } from '@angular/router';
 import { SectionsModule } from '../_shared/sections/sections.module';
 import { TreeviewModule } from 'ngx-treeview';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     component: DatasheetComponent
   },
   {
-    path: 'detail',
+    path: 'detail/:id',
     component: DatasheetDetailComponent
   },
 ];
@@ -22,6 +23,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SectionsModule,
+    NgxPaginationModule,
     TreeviewModule.forRoot(),
     RouterModule.forChild(routes)
   ]

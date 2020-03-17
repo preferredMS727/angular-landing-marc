@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-blog-detail',
@@ -13,10 +14,16 @@ export class BlogDetailComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.initializeForm()
+    this.initializeForm();
+    this.activatedRoute.params.subscribe(params => {
+      console.log('this is blog detail id: ', params['id']); // Print the parameter to the console. 
+    });
+
+    
   }
 
   initializeForm() {

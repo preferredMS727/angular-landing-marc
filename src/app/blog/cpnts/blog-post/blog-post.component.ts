@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const $: any;
 
@@ -11,7 +12,9 @@ export class BlogPostComponent implements OnInit {
   @Input() postData: any;
   commentCounter: number;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.commentCounter = this.postData.comments.length;
@@ -26,4 +29,7 @@ export class BlogPostComponent implements OnInit {
     });
   }
 
+  goBlogDetail(id: string) {
+    this.router.navigateByUrl('blog/detail/' + id);
+  }
 }

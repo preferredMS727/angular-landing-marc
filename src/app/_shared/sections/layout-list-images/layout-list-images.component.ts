@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 
 import { Layout, LayoutType } from '../../models/layout.model';
-import { Subject, Observable, of } from 'rxjs';
+import { Subject, Observable, of, Subscription } from 'rxjs';
 import { distinctUntilChanged, mergeMap, startWith, tap } from 'rxjs/operators';
+import { Route } from '@angular/compiler/src/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare const $: any;
 
@@ -13,9 +15,7 @@ declare const $: any;
 })
 export class LayoutListImagesComponent implements OnInit {
   @Input() title?: string;
-  filterKeySubject: Subject<any> = new Subject();
-  filterKey = this.filterKeySubject.asObservable();
-  filteredValueObservable: Observable<any>;
+  @Input() btnLink?: string;
 
   allLayoutList: Layout[] = [
     {
@@ -76,7 +76,83 @@ export class LayoutListImagesComponent implements OnInit {
       }
     },
     {
+      id: '3',
+      title: 'test2',
+      description: 'test2_description',
+      createdAt: new Date(),
+      user: {
+        id: '2',
+        username: 'tester2',
+        firstName: 'tester2_firstname',
+        middleName: 'tester2_middlename',
+        lastName: 'tester2_lastname',
+        mobile: '+223223223',
+        email: 'tester2@marc.com',
+      },
+      layoutType: {
+        id: '2',
+        name: 'x.style',
+      }
+    },
+    {
+      id: '1',
+      title: 'test1',
+      description: 'test1_description',
+      createdAt: new Date(),
+      user: {
+        id: '1',
+        username: 'tester1',
+        firstName: 'tester1_firstname',
+        middleName: 'tester1_middlename',
+        lastName: 'tester1_lastname',
+        mobile: '+123123123',
+        email: 'tester1@marc.com',
+      },
+      layoutType: {
+        id: '1',
+        name: 'x.style',
+      }
+    },
+    {
       id: '2',
+      title: 'test2',
+      description: 'test2_description',
+      createdAt: new Date(),
+      user: {
+        id: '2',
+        username: 'tester2',
+        firstName: 'tester2_firstname',
+        middleName: 'tester2_middlename',
+        lastName: 'tester2_lastname',
+        mobile: '+223223223',
+        email: 'tester2@marc.com',
+      },
+      layoutType: {
+        id: '2',
+        name: 'x.style',
+      }
+    },
+    {
+      id: '1',
+      title: 'test1',
+      description: 'test1_description',
+      createdAt: new Date(),
+      user: {
+        id: '1',
+        username: 'tester1',
+        firstName: 'tester1_firstname',
+        middleName: 'tester1_middlename',
+        lastName: 'tester1_lastname',
+        mobile: '+123123123',
+        email: 'tester1@marc.com',
+      },
+      layoutType: {
+        id: '1',
+        name: 'x.style',
+      }
+    },
+    {
+      id: '3',
       title: 'test2',
       description: 'test2_description',
       createdAt: new Date(),
@@ -96,7 +172,15 @@ export class LayoutListImagesComponent implements OnInit {
     },
   ];
 
+  collection = [
+    { id: '0', name: 'all' },
+    { id: '1', name: 'x.style' },
+    { id: '2', name: 'y.style' },
+    { id: '3', name: 'z.style' }
+  ];
+
   filteredLayoutList: Layout[] = [];
+
   allLayoutType: LayoutType[] = [
     { id: '0', name: 'all' },
     { id: '1', name: 'x.style' },
@@ -104,29 +188,25 @@ export class LayoutListImagesComponent implements OnInit {
     { id: '3', name: 'z.style' }
   ];
 
+  private routeSub: Subscription;
+
   constructor(
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private router: Router,
+    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     $(document).ready(() => {
       this.initialize();
-    })
-
-    this.filteredValueObservable = this.filterKey.pipe(
-      startWith('0'),
-      mergeMap(res => of(this.allLayoutList.filter(el => res === '0' ? true : res === el.id))),
-      tap(res => this.filteredLayoutList = res)
-    );
+    });
+    this.filteredLayoutList = this.allLayoutList;
   }
-
+ 
   initialize() {
-    /* ---------------------------------------------- /*
- * Portfolio
- /* ---------------------------------------------- */
-
-    var worksgrid = $('#works-grid'),
-      worksgrid_mode;
+    let worksgrid = $('#works-grid'),
+      worksgrid_mode: any;
 
     if (worksgrid.hasClass('works-grid-masonry')) {
       worksgrid_mode = 'masonry';
@@ -145,7 +225,6 @@ export class LayoutListImagesComponent implements OnInit {
       $('#filters .current').removeClass('current');
       $(this).addClass('current');
       var selector = $(this).attr('data-filter');
-
       worksgrid.isotope({
         filter: selector,
         animationOptions: {
@@ -154,13 +233,22 @@ export class LayoutListImagesComponent implements OnInit {
           queue: false
         }
       });
-
       return false;
     });
   }
 
+
+
   filterLayoutOption(filterId: string) {
-    this.filterKeySubject.next(filterId);
+    this.filteredLayoutList = this.allLayoutList.filter(res => filterId == '0' ? true : res.id === filterId)
+  }
+
+  createNewLayout() {
+    this.router.navigateByUrl('layout');
+  }
+
+  goDetailLayout(id: string) {
+    this.router.navigateByUrl('inspiration/detail/' + id);
   }
 
 }

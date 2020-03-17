@@ -21,10 +21,6 @@ const routes: Routes = [
     path: 'blog',
     loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule),
   },
-  // {
-  //   path: 'record',
-  //   loadChildren: () => import('./record/record.module').then(m => m.RecordModule),
-  // },
   {
     path: 'datasheet',
     loadChildren: () => import('./datasheet/datasheet.module').then(m => m.DatasheetModule),

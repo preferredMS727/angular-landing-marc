@@ -22,9 +22,9 @@ export class VideoBackgroundComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
-    // setTimeout(() => {
-    //   this.spinner.hide();
-    // }, 500);
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
 
     this.initialize();
 
@@ -38,8 +38,9 @@ export class VideoBackgroundComponent implements OnInit {
         }
       });
       $("#video-player").on("YTPStart", (e) => {
-        this.spinner.hide();
-        console.log('video played')
+        // this.spinner.hide();
+        console.log('video played');
+        $('.video-player').YTPMute();
       })
     });
 
@@ -118,6 +119,13 @@ export class VideoBackgroundComponent implements OnInit {
         }
       }
     }
+
+    let module = $('.home-section, .module, .module-small, .side-image');
+    module.each(function(i) {
+        if ($(this).attr('data-background')) {
+            $(this).css('background-image', 'url(' + $(this).attr('data-background') + ')');
+        }
+    });
   }
 
 }

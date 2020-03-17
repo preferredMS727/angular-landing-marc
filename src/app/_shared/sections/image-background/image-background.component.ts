@@ -23,7 +23,7 @@ export class ImageBackgroundComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log('this is section: ', this.section)
+    // console.log('this is section: ', this.section);
     this.renderer.setStyle(this.section.nativeElement, 'background-image', "url(" + this.backgroundImage + ")");
   }
 

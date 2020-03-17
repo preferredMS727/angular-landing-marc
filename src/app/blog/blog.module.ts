@@ -9,7 +9,7 @@ import { SlideblogPostComponent } from './cpnts/slideblog-post/slideblog-post.co
 import { BlogComponent } from './blog.component';
 import { BlogNavigationComponent } from './blog-navigation/blog-navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +20,7 @@ const routes: Routes = [
         component: BlogListComponent
       },
       {
-        path: 'detail',
+        path: 'detail/:id',
         component: BlogDetailComponent
       },
       
@@ -30,7 +30,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ BlogListComponent, BlogDetailComponent, BlogPostComponent, SlideblogPostComponent, BlogComponent, BlogNavigationComponent ],
+  declarations: [ 
+    BlogListComponent,
+    BlogDetailComponent,
+    BlogPostComponent,
+    SlideblogPostComponent,
+    BlogComponent,
+    BlogNavigationComponent
+  ],
   imports: [
     CommonModule,
     SectionsModule,

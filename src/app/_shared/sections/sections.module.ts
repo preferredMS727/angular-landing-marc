@@ -8,6 +8,7 @@ import { LayoutListImagesComponent } from './layout-list-images/layout-list-imag
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LastBlogsComponent } from './last-blogs/last-blogs.component';
 import { GetInTouchComponent } from './get-in-touch/get-in-touch.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { GetInTouchComponent } from './get-in-touch/get-in-touch.component';
   imports: [
     CommonModule,
     NgxSpinnerModule,
+    NgxPaginationModule
   ],
   exports: [
     ImageBackgroundComponent,

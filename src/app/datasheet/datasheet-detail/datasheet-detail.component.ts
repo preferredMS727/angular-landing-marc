@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 declare const $: any;
 @Component({
@@ -8,9 +9,17 @@ declare const $: any;
 })
 export class DatasheetDetailComponent implements OnInit {
 
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) {
+
+  }
   ngOnInit() {
     this.initialize();
-
+    this.activatedRoute.params.subscribe(params => {
+      console.log('this is datasheet detail id: ', params['id']); // Print the parameter to the console. 
+    });
+    
   }
 
   // Post Slider

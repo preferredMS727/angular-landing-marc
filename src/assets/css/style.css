@@ -3041,3 +3041,9 @@ Google map
 .input-err {
   color: red;
 }
+
+.ngx-pagination {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  text-align: center;
+  font-size: 15px;
+}

@@ -12,7 +12,7 @@ const routes: Routes = [
     component: InspirationListComponent
   },
   {
-    path: 'detail',
+    path: 'detail/:id',
     component: InspirationDetailComponent
   },
 ];

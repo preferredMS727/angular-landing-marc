@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeviewItem, TreeviewConfig } from 'ngx-treeview';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-datasheet',
@@ -21,32 +22,58 @@ export class DatasheetComponent implements OnInit {
 
   datasheetList = [
     {
-      link: 'datasheet/detail',
+      id: 1,
       workTitle: 'Corporate Identity',
       workDescr: 'Illustration',
       image: 'assets/images/portfolio/grid-portfolio1.jpg'
     },
     {
-      link: 'datasheet/detail',
+      id: 2,
       workTitle: 'Disk Cover',
       workDescr: 'Illustration',
       image: 'assets/images/portfolio/grid-portfolio3.jpg'
     },
     {
-      link: 'datasheet/detail',
+      id: 3,
       workTitle: 'Corporate Identity',
       workDescr: 'Illustration',
       image: 'assets/images/portfolio/grid-portfolio4.jpg'
     },
     {
-      link: 'datasheet/detail',
+      id: 4,
       workTitle: 'Disk Cover',
       workDescr: 'Illustration',
       image: 'assets/images/portfolio/grid-portfolio5.jpg'
     },
+    {
+      id: 5,
+      workTitle: 'Corporate Identity',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio1.jpg'
+    },
+    {
+      id: 6,
+      workTitle: 'Disk Cover',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio3.jpg'
+    },
+    {
+      id: 7,
+      workTitle: 'Corporate Identity',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio1.jpg'
+    },
+    {
+      id: 8,
+      workTitle: 'Disk Cover',
+      workDescr: 'Illustration',
+      image: 'assets/images/portfolio/grid-portfolio3.jpg'
+    },
   ]
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     const Category = new TreeviewItem({
@@ -89,6 +116,10 @@ export class DatasheetComponent implements OnInit {
 
   onSelectedChange($event) {
     console.log('select chnage: ', $event)
+  }
+
+  goDatasheetDetail(id: string) {
+    this.router.navigateByUrl('datasheet/detail/' + id);
   }
 
 }
